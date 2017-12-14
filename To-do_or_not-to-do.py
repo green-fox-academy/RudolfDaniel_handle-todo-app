@@ -38,6 +38,20 @@ def task_remover(remover):
         todolist.write(list_of_task[i].strip() + "\n")
     todolist.close()
 
+def task_checker(checker):
+    todolist = open("tasklist.txt", "r")
+    list_of_task = todolist.readlines()
+    word = list_of_task[int(checker)-1]
+    word = word[:1] + "X]" + word[3:]
+    word_list = [word]
+    list_of_task = list_of_task[:int(checker)-1] + word_list + list_of_task[int(checker):]
+    todolist.close()
+    todolist = open("tasklist.txt", "w")
+    for i in range(len(list_of_task)):
+        todolist.write(list_of_task[i].strip() + "\n")
+    todolist.close()
+
+
 if len(sys.argv) == 1:
     print(rtfm)
 elif len(sys.argv) == 2:
@@ -49,6 +63,6 @@ elif len(sys.argv) == 3:
     elif sys.argv[1] == "-r":
         task_remover(sys.argv[2])
     elif sys.argv[1] == "-c":
-        print("You wanted to complete a task.")
+        task_checker(sys.argv[2])
     else:
         print("Unsupported argument." + "\n" + "\n" + rtfm)
