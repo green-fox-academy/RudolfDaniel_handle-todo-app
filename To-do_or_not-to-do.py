@@ -25,7 +25,7 @@ def lister():
 
 def task_adder(new_text):
     todolist = open("tasklist.txt", "a")
-    todolist.write("\n" + new_text)
+    todolist.write("\n" + "[ ] " + new_text)
     todolist.close()
 
 def task_remover(remover):
