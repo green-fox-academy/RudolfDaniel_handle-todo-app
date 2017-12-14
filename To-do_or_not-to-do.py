@@ -31,7 +31,7 @@ def task_adder(new_text):
 def task_remover(remover):
     todolist = open("tasklist.txt", "r")
     list_of_task = todolist.readlines()
-    list_of_task = list_of_task[0:int(remover)-1] + list_of_task[int(remover):]
+    list_of_task = list_of_task[:int(remover)-1] + list_of_task[int(remover):]
     todolist.close()
     todolist = open("tasklist.txt", "w")
     for i in range(len(list_of_task)):
